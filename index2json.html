@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title> table data</title>
+	<style>
+		.button1 {
+			height: 40px;
+		    background-color: red;
+		    width: 150px;
+		    text-align: center;
+		    line-height: 37px;
+		    color: white;
+		    border: 1px solid #e3e3e3;
+		    cursor: pointer;
+		    box-shadow: 
+		    			5px 5px 5px rgba(0,0,0,0.3);
+		    border-radius: 5px;
+		}
+		.button1:hover {
+			position: relative;
+			top: -2px;
+			left: -2px;
+		}
+		#output{
+			width: 25px;
+			height: 25px;
+			padding:12px;
+			margin-left: 25px;
+
+		}
+
+	</style>
+</head>
+<body>
+	<script>
+
+		var jsonArray=[
+	{
+		"itemname": "Shoe",
+		"price": 2500,
+		"category": "Personal"
+	},
+
+	{
+		"itemname": "T-Shirt",
+		"price": 1500,
+		"category": "Garments"
+	},
+
+	{
+		"itemname": "Book-ignited minds",
+		"price": 350,
+		"category": "Stationary"
+	}
+
+
+];
+ function dataAvailable(){
+ 	var contents ="<table border='1'>";
+ 	var head="<tr><td> itemname </td><td> price </td><td colspan='2'> category </td></tr>";
+     contents +=head;
+ 	for(i=0;i<jsonArray.length;i++)
+ 	{
+ 		var obj=jsonArray[i];
+ 		var row ="<tr>"+"<td>"+ obj.itemname+"</td>" + "<td>" +obj.price + "</td>" + "<td>" +obj.category +"</td>" + "<td>"+"<input type='checkbox'>" +"</td>" + "</tr>";
+ 		contents +=row;
+ 	}
+ 	contents += "</table>";
+ 	document.getElementById("output").innerHTML = contents;
+ }
+</script>
+<button class="button1" onclick="dataAvailable()">show table</button>
+
+<div id="output">
+	
+</div>
+
+
+	
+</body>
+</html>

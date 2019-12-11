@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>sticky</title>
+	<script type="text/javascript">
+		function showdata(){
+			var URL="https://jsonplaceholder.typicode.com/posts";
+			var httpReq = new XMLHttpRequest();
+			httpReq.onreadystatechange=showtable;
+			httpReq.open("GET",URL,true);
+			httpReq.send();
+		}
+
+		function showtable(){
+			if(this.readyState==4 && this.status==200)
+			{
+				var Array=JSON.parse(this.responseText);
+				var contents = "<table border='1'>";
+				var head ="<tr><td> userId</td><td> id</td><td> title</td><td> body</td></tr>";
+				contents +=head;
+				for(i=0;i<Array.length;i++)
+				{
+					var obj=Array[i];
+					var row="<tr><td>" + obj.userId+" </td><td>" + obj.id+" </td><td>" + obj.title+" </td><td>" + obj.body+"</tr>";
+
+					contents +=row;
+				}
+				contents +="</table>";
+				document.getElementById("output").innerHTML=contents;
+			}
+		}
+
+	</script>
+	<style type="text/css">
+		tr:nth-child(even){
+			background-color: blue;
+
+		}
+		tr:nth-child(odd){
+			background-color: red;
+
+		}
+	</style>
+</head>
+<body>
+	<button onclick="showdata()">show </button>
+	<div id="output">
+		
+	</div>
+
+
+</body>
+</html>
